@@ -76,7 +76,20 @@ class MainActivity : AppCompatActivity() {
         _btnEvent.setOnClickListener {
             bukaDetail(event)
         }
+
+        val _btnDeveloper = findViewById<Button>(R.id.developer)
+        _btnDeveloper.setOnClickListener {
+            val emailIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "message/rfc822"
+                putExtra(Intent.EXTRA_EMAIL, arrayOf("c14240190@john.petra.ac.id"))
+                putExtra(Intent.EXTRA_SUBJECT, "Tentang Aplikasi")
+                putExtra(Intent.EXTRA_TEXT, "Halo, saya ingin mengetahui tentang aplikasi ini.")
+            }
+            startActivity(emailIntent)
+        }
     }
+
+
 
     private fun bukaDetail(kegiatan : Kegiatan){
         val intentWithData = Intent(this@MainActivity, DetailActivity::class.java).apply {

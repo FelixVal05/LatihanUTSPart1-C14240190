@@ -249,7 +249,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:layout_marginHorizontal="5dp"
-                android:id="@+id/call"
+                android:id="@+id/developer"
                 android:backgroundTint="#3F704D"
                 android:textColor="@color/white"
                 android:text="📧 Hubungi Developer">
