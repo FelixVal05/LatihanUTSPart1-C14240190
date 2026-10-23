@@ -1,6 +1,10 @@
 package Asus.LatihanUTSPart1
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +19,25 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val _btnSeminar = findViewById<LinearLayout>(R.id.seminar)
+        val _btnWorkshop = findViewById<LinearLayout>(R.id.workshop)
+        val _btnEvent = findViewById<LinearLayout>(R.id.event)
+
+        _btnSeminar.setOnClickListener {
+            val intent = Intent(this, DetailActivity::class.java)
+            startActivity(intent)
+        }
+
+        _btnWorkshop.setOnClickListener {
+            val intent = Intent(this, DetailActivity::class.java)
+            startActivity(intent)
+        }
+
+        _btnEvent.setOnClickListener {
+            val intent = Intent(this, DetailActivity::class.java)
+            startActivity(intent)
         }
     }
 }
