@@ -194,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:layout_marginHorizontal="5dp"
-                android:id="@+id/about"
+                android:id="@+id/jadwal"
                 android:backgroundTint="@color/white"
                 android:text="📅 Tambah jadwal"
                 android:textColor="@color/black"

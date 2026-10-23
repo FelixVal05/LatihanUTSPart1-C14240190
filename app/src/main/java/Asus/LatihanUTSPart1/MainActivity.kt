@@ -11,6 +11,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.util.Calendar
+import java.util.TimeZone
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +32,9 @@ class MainActivity : AppCompatActivity() {
             "20 Oktober 2026",
             "09.00 - 12.00 WIB",
             "Auditorium Kampus XYZ",
-            "Seminar ini menghadirkan pembicara dari industri teknologi untuk membahas perkembangan terbaru dalam pengembangan aplikasi Android, mulai dari arsitektur modern, UI/UX, hingga best practice dalam pembuatan aplikasi yang berkualitas."
+            "Seminar ini menghadirkan pembicara dari industri teknologi untuk membahas perkembangan terbaru dalam pengembangan aplikasi Android, mulai dari arsitektur modern, UI/UX, hingga best practice dalam pembuatan aplikasi yang berkualitas.",
+            buatWaktu(2026,10,20,9,0),
+            buatWaktu(2026,10,20,12,0)
         )
 
         val workshop = Kegiatan(
@@ -40,7 +44,9 @@ class MainActivity : AppCompatActivity() {
             "25 Oktober 2026",
             "13.00 - 16.00 WIB",
             "Lab Komputer Lt. 3",
-            "Workshop UI/UX Design membahas dasar perancangan antarmuka aplikasi yang mudah digunakan. Peserta akan belajar membuat konsep desain, memilih warna, menyusun layout, dan memahami pengalaman pengguna."
+            "Workshop UI/UX Design membahas dasar perancangan antarmuka aplikasi yang mudah digunakan. Peserta akan belajar membuat konsep desain, memilih warna, menyusun layout, dan memahami pengalaman pengguna.",
+            buatWaktu(2026,10,25,13,0),
+            buatWaktu(2026,10,25,16,0)
         )
 
         val event = Kegiatan(
@@ -50,7 +56,9 @@ class MainActivity : AppCompatActivity() {
             "28 November 2026",
             "08.00 - 17.00 WIB",
             "Lapangan Kampus XYZ",
-            "Campus Day 2026 merupakan kegiatan kampus yang berisi berbagai aktivitas mahasiswa, informasi organisasi, pameran komunitas, serta kesempatan untuk mengenal kegiatan dan lingkungan kampus."
+            "Campus Day 2026 merupakan kegiatan kampus yang berisi berbagai aktivitas mahasiswa, informasi organisasi, pameran komunitas, serta kesempatan untuk mengenal kegiatan dan lingkungan kampus.",
+            buatWaktu(2026,11,28,8,0),
+            buatWaktu(2026,11,28,17,0)
         )
 
         val _btnSeminar = findViewById<LinearLayout>(R.id.seminar)
@@ -75,5 +83,12 @@ class MainActivity : AppCompatActivity() {
             putExtra(dataKegiatan, kegiatan)
         }
         startActivity(intentWithData)
+    }
+
+    private fun buatWaktu(tahun: Int, bulan: Int, hari: Int, jam: Int, menit: Int): Long {
+        val kalender = Calendar.getInstance(TimeZone.getTimeZone("Asia/Jakarta")).apply {
+            set(tahun,bulan-1,hari,jam,menit,0)
+        }
+        return kalender.timeInMillis
     }
 }

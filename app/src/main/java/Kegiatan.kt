@@ -9,5 +9,7 @@ data class Kegiatan(
     val tanggal: String,
     val jam: String,
     val lokasi: String,
-    val deskripsi: String
+    val deskripsi: String,
+    val mulai:Long,
+    val selesai: Long
 ): Parcelable

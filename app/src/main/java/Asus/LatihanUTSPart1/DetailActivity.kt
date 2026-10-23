@@ -3,6 +3,7 @@ package Asus.LatihanUTSPart1
 import Kegiatan
 import android.content.Intent
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -10,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.util.Calendar
 
 class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +36,20 @@ class DetailActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.back).setOnClickListener {
             finish()
+        }
+
+        val btnJadwal = findViewById<Button>(R.id.jadwal)
+        btnJadwal.setOnClickListener {
+            val eventIntent = Intent(Intent.ACTION_INSERT).apply {
+                data = CalendarContract.Events.CONTENT_URI
+                putExtra(CalendarContract.Events.TITLE, kegiatan?.title)
+                putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, kegiatan?.mulai)
+                putExtra(CalendarContract.EXTRA_EVENT_END_TIME, kegiatan?.selesai)
+                putExtra(CalendarContract.Events.EVENT_LOCATION, kegiatan?.lokasi)
+                putExtra(CalendarContract.Events.DESCRIPTION, kegiatan?.deskripsi)
+                putExtra(CalendarContract.Events.ALL_DAY, false)
+            }
+            startActivity(eventIntent)
         }
     }
 
