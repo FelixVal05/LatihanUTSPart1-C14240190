@@ -53,6 +53,7 @@
                 android:text="Daftar Kegiatan"
                 android:textStyle="bold"
                 android:textSize="24dp"
+                android:textColor="@color/black"
                 android:layout_marginLeft="16dp">
             </TextView>
         </LinearLayout>
